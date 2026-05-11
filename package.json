@@ -1,0 +1,86 @@
+{
+  "name": "@pmatrix/codex-monitor",
+  "version": "0.1.0",
+  "description": "P-MATRIX runtime governance monitor for OpenAI Codex CLI — Safety Gate, Kill Switch, Live Grade",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "pmatrix-codex": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "NOTICE",
+    "README.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "hooks"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest --passWithNoTests",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@pmatrix/field-node-runtime": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^22.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.4.0"
+  },
+  "keywords": [
+    "codex",
+    "openai-codex",
+    "pmatrix",
+    "safety",
+    "monitoring",
+    "governance",
+    "agent",
+    "hooks",
+    "field",
+    "protocol",
+    "state-vector"
+  ],
+  "author": "P-MATRIX <architect@p-matrix.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/p-matrix/codex-monitor/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "homepage": "https://github.com/p-matrix/codex-monitor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-matrix/codex-monitor.git"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.test.ts"
+    ]
+  },
+  "signing": {
+    "method": "sigstore-cosign",
+    "version": 1,
+    "identity_pattern": "https://github.com/p-matrix/pmatrix-platform/.github/workflows/plugin-sign.yml.*",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "verify_command": "bash server/scripts/verify_plugin.sh --pkg <name> --version <semver> --tgz <pkg>.tgz --sig <pkg>.sig --crt <pkg>.crt",
+    "status": "skeleton-v0",
+    "doc": "docs/security/PLUGIN_SIGNING.md"
+  }
+}
