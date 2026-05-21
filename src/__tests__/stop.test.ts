@@ -93,8 +93,10 @@ describe('handleStop — session_summary', () => {
     expect(summaryCall.credentialBlocks).toBe(1);
     expect(summaryCall.safetyGateBlocks).toBe(0);
     expect(summaryCall.endReason).toBe('completed');
-    expect(summaryCall.framework).toBe('codex');
-    expect(summaryCall.signal_source).toBe('codex_hook');
+    // R-X.3 migration: framework + signal_source now flow via AdapterIdentity
+    // at client construction time (PMatrixHttpClient internal injection),
+    // no longer carried on SessionSummaryInput. Equivalent coverage in the
+    // Tier 2 contract.test.ts (PMatrixHttpClient identity test).
   });
 
   test('dataSharing=false → sendSessionSummary NOT called', async () => {

@@ -25,6 +25,11 @@
 
 import { loadConfig } from './config';
 import { PMatrixHttpClient } from './client';
+
+// R-X.4 Tier 3 audit: public re-export so consumers can instantiate the
+// vendor-bound client without importing from './client' subpath.
+export { PMatrixHttpClient } from './client';
+export type { SessionSummaryInput } from './client';
 import {
   CodexHookInput,
   PreToolUseInput,
